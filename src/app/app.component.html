@@ -1,0 +1,113 @@
+<div>
+  <div class="headerWrapper">
+    <h1>Raport</h1>
+  </div>
+  <div class="content">
+    <div class="menuWrapper">
+      <form
+        #raportsForm="ngForm"
+        (ngSubmit)="onSubmit(raportsForm)"
+        class="inputsHolder"
+        [dateRange]="['dateFrom', 'dateTo']"
+        novalidate
+      >
+        <div class="inputWrapper">
+          <label for="local">Local: </label>
+          <select
+            class="selectors"
+            id="local"
+            [ngClass]="{ 'is-invalid': raportsForm.submitted && place.invalid }"
+            [(ngModel)]="raport.place"
+            name="raportPlace"
+            #place="ngModel"
+            required
+          >
+            <option [value]="raport.place" selected disabled>Select local:</option>
+            <option *ngFor="let local of localsSelect$ | async" [value]="local">
+              {{ local }}
+            </option>
+          </select>
+          <div *ngIf="raportsForm.submitted && place.invalid" class="error">
+            <div *ngIf="place.errors.required">Place is required</div>
+          </div>
+        </div>
+        <div class="inputWrapper">
+          <label for="dateFrom">Starting date: </label>
+          <input
+            type="date"
+            class="selectors"
+            id="dateFrom"
+            [ngClass]="{
+              'is-invalid': raportsForm.submitted && dateFrom.invalid
+            }"
+            [(ngModel)]="raport.dateFrom"
+            name="dateFrom"
+            #dateFrom="ngModel"
+            placeholder="Od: "
+            required
+          />
+          <div
+            *ngIf="
+              raportsForm.submitted &&
+              dateFrom.invalid &&
+              dateFrom.errors.required
+            "
+            class="error"
+          >
+            Enter starting date
+          </div>
+        </div>
+        <div class="inputWrapper">
+          <label for="dateTo">Final date: </label>
+          <input
+            type="date"
+            class="selectors"
+            id="dateTo"
+            [ngClass]="{
+              'is-invalid': raportsForm.submitted && dateTo.invalid
+            }"
+            [(ngModel)]="raport.dateTo"
+            name="dateTo"
+            #dateTo="ngModel"
+            placeholder="Do: "
+            required
+          />
+          <div *ngIf="raportsForm.submitted && dateTo.invalid" class="error">
+            <div *ngIf="dateTo.errors.required">Enter final date</div>
+            <div *ngIf="dateTo.errors.dateRange">
+              This date must be later than starting date
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Zatwierdz
+        </button>
+      </form>
+    </div>
+    <div class="tableWrapper">
+      <table *ngIf="showTable; else startingText">
+        <thead>
+          <tr>
+            <th *ngFor="let header of headers">{{ header }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let raport of raports$ | async">
+            <td>{{ raport.name }}</td>
+            <td>{{ raport.date }}</td>
+            <td>{{ raport.time }}</td>
+            <td>{{ raport.user }}</td>
+            <td>{{ raport.local }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #startingText>
+        <div class="startingText" #startingText>
+          Wpisz szukany lokal, odpowiedni przedzial czasowy i kliknij przycisk
+          Zatwierdz.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

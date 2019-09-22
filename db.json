@@ -1,0 +1,69 @@
+{
+  "exports": [
+    {
+      "id": 1,
+      "name": "Test",
+      "local": "Lokal 1",
+      "date": "2018-04-15",
+      "time": "12:00",
+      "user": "Adam"
+    },
+    {
+      "id": 2,
+      "name": "Test",
+      "local": "Lokal 2",
+      "date": "2018-10-15",
+      "time": "14:00",
+      "user": "Piotr"
+    },
+    {
+      "id": 3,
+      "name": "Test",
+      "local": "Lokal 3",
+      "date": "2018-04-10",
+      "time": "20:00",
+      "user": "Bartek"
+    },
+    {
+      "id": 4,
+      "name": "Test",
+      "local": "Lokal 4",
+      "date": "2018-01-15",
+      "time": "09:00",
+      "user": "Ania"
+    },
+    {
+      "id": 5,
+      "name": "Test",
+      "local": "Lokal 5",
+      "date": "2018-02-21",
+      "time": "19:30",
+      "user": "Agnieszka"
+    },
+    {
+      "id": 6,
+      "name": "Test",
+      "local": "Lokal 6",
+      "date": "2018-12-15",
+      "time": "12:00",
+      "user": "Monika"
+    },
+    {
+      "id": 7,
+      "name": "Test",
+      "local": "Lokal 7",
+      "date": "2018-07-01",
+      "time": "05:00",
+      "user": "Zygmunt"
+    }
+  ],
+  "locals": [
+    "Lokal 1",
+    "Lokal 2",
+    "Lokal 3",
+    "Lokal 4",
+    "Lokal 5",
+    "Lokal 6",
+    "Lokal 7"
+  ]
+}
