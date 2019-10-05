@@ -5,6 +5,7 @@
   <div class="content">
     <div class="menuWrapper">
       <form
+        focusInvalidInput
         #raportsForm="ngForm"
         (ngSubmit)="onSubmit(raportsForm)"
         class="inputsHolder"
@@ -22,7 +23,9 @@
             #place="ngModel"
             required
           >
-            <option [value]="raport.place" selected disabled>Select local:</option>
+            <option [value]="raport.place" selected disabled
+              >Select local:</option
+            >
             <option *ngFor="let local of localsSelect$ | async" [value]="local">
               {{ local }}
             </option>
