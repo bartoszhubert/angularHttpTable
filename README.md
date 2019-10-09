@@ -1,2 +1,2 @@
-simple Angular app with Http service // 22.09.2019
+simple Angular app with Http service // 22.02.2019
 npm run server + npm start
